@@ -2,6 +2,7 @@
 // expectations.
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
+var support = require('./support/support');
 chai.use(chaiAsPromised);
 
 var expect = chai.expect;
@@ -21,22 +22,28 @@ module.exports = function() {
     });
 
     this.Given(/^I log onto priority quote with username "([^"]*)" and password "([^"]*)"$/, function(user, password,next) {
-        
-        browser.get("app/priority-quote-beta/#/login?returnUrl=%2Flogin");
-        browser.element(by.name("username")).sendKeys(user);
-        browser.element(by.name("password")).sendKeys(password);
-        browser.ignoreSynchronization = true;
-        browser.element(by.text("login")).click();
-        next();    
+        console.log("Log into priority quote");
+        support.logIntoPriorityQuote(user,password, function(result) {
+            next();
+        });
     });
 
     this.Then(/^I should see text "([^"]*)" on page$/, function(textToFind,next) {
-        text = browser.element(by.tagName('html')).getText();
+        browser.ignoreSynchronization = true;
+        text = browser.getPageSource();
+        console.log(text);
+        console.log(textToFind);
         expect(text).to.eventually.contain(textToFind).and.notify(next);
     });
 
-
-
+    this.When(/^I click on Small Group$/, function(next) {
+        console.log("\n Click on small group");
+        browser.ignoreSynchronization = true;
+        browser.sleep(3000).then(function() {
+                element(by.css("a.ph-btn.btn-green")).click();
+                browser.sleep(3000).then(function() {next() });
+            });
+        });
 
     this.Then(/^it should still do normal tests$/, function(next) {
         expect(true).to.equal(true);
