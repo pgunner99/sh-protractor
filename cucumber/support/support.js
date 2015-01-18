@@ -15,4 +15,11 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
     });
 };
 
+Support.prototype.clickElement = function(link, callback){
+	console.log("\n click on " + link);
+	link.click();
+ 	callback(result);
+        };
+
+
 module.exports = new Support();

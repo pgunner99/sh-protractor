@@ -5,9 +5,11 @@ Feature: I can login to priority quote
 
   
   
+  
   Scenario: Login with invalid crendentials
     Given I log onto priority quote with username "routphil_bad" and password "badpassword"
     Then I should see text "Login was unsuccessful" on page
+
 
   Scenario: Login with valid crendentials
     Given I log onto priority quote with username "BKFIERENS" and password "test"
@@ -16,5 +18,5 @@ Feature: I can login to priority quote
   @dev
   Scenario: Create a small group
     Given I log onto priority quote with username "BKFIERENS" and password "test"
-    When I click on Small Group
+    When I click "smallGroup"
     Then I should see text "Create new group" on page

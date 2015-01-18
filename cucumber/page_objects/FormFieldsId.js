@@ -86,6 +86,8 @@ var FormFieldsId = function() {
 	/////////////////////New Page//////////////////////////////////////////
 	//Priority Quote create new group page.
 	
+	this.smallGroup = "element(by.css('a.ph-btn.btn-green'))"
+	
  	this.GroupName = "GroupName";
  	this.GroupName_type = "name";
  		
