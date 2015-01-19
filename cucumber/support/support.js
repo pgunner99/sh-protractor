@@ -70,7 +70,7 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
     var formFieldsId = new FormFieldsId();
     var pageLocations = new PageLocations();
 
-    browser.get(pageLocations.pg_login);
+    browser.get(pageLocations.pq_login);
     formFieldsId.pq_username.sendKeys(user);
     formFieldsId.pq_password.sendKeys(password);
     browser.driver.sleep(2000).then( function() {

@@ -50,17 +50,17 @@ module.exports = function() {
         });
     });
 
-    this.When(/^I enter in "([^"]*)" in form field "([^"]*)"$/, function(text, formField next) {
+    this.When(/^I enter in "([^"]*)" in form field "([^"]*)"$/, function(text, formField, next) {
         console.log("\n Selecting element:" + link);
 
 
         browser.ignoreSynchronization = true;
-        support.fillInField(text, formFieldId function(result) { 
+        support.fillInField(text, formFieldId, function(result) { 
         	next(); 
         });
     });
 
-    this.When(/^I wait "([^"]*)" seconds$/, function(seconds, formField next) {
+    this.When(/^I wait "([^"]*)" seconds$/, function(seconds, formField, next) {
         console.log("\n Selecting element:" + link);
 
     	browser.driver.sleep(seconds * 1000).then( function() {
