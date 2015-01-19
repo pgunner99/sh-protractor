@@ -5,7 +5,6 @@ Feature: I can login to priority quote
 
   
   
-  @dev
   Scenario: Login with invalid crendentials
     Given I log onto priority quote with username "routphil_bad" and password "badpassword"
     Then I should see text "Login was unsuccessful" on page

@@ -38,18 +38,20 @@ Support.prototype.clickElement = function(link, callback){
   
   var formFieldsId = new FormFieldsId();
 
-  formFieldId[link].click().then(function() {
-      browser.driver.sleep(1000).then(function(result) {
+  console.log(link);
+  formFieldsId[link].click().then(function() {
+      browser.driver.sleep(2000).then(function(result) {
             callback(result);
       });
     });
+
 };
 
 Support.prototype.fillInField = function(text, formFieldId, callback){
   
   var formFieldsId = new FormFieldsId();
 
-  formFieldsId[formFieldId].sendKeys(text).then(function(restult) {
+  formFieldsId[formFieldId].sendKeys(text).then(function(result) {
     callback(result);
     });
 };
@@ -76,7 +78,7 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
     browser.driver.sleep(2000).then( function() {
         formFieldsId.pq_login_button.click();
         console.log("After Click");
-        browser.driver.sleep(5000).then(function(result) {
+        browser.driver.sleep(10000).then(function(result) {
             console.log("After Sleep");
             callback(result);
         });

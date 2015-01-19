@@ -45,23 +45,24 @@ module.exports = function() {
         console.log("\n Selecting element:" + link);
 
         browser.ignoreSynchronization = true;
+        
         support.clickElement(link, function(result) { 
         	next(); 
         });
     });
 
     this.When(/^I enter in "([^"]*)" in form field "([^"]*)"$/, function(text, formField, next) {
-        console.log("\n Selecting element:" + link);
+        console.log("\n Selecting element:" + formField);
 
 
         browser.ignoreSynchronization = true;
-        support.fillInField(text, formFieldId, function(result) { 
+        support.fillInField(text, formField, function(result) { 
         	next(); 
         });
     });
 
-    this.When(/^I wait "([^"]*)" seconds$/, function(seconds, formField, next) {
-        console.log("\n Selecting element:" + link);
+    this.When(/^I wait "([^"]*)" seconds$/, function(seconds, next) {
+        console.log("\n Wait for " + seconds + " seconds");
 
     	browser.driver.sleep(seconds * 1000).then( function() {
     		next();		
