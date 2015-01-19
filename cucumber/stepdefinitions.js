@@ -128,31 +128,60 @@ var FormFieldsId = function() {
 
 module.exports = function() {
 
-	this.Given(/^I log onto priority quote with username "([^"]*)" and password "([^"]*)"$/, function(user, password,next) {
-        console.log("Log into priority quote test");
-        support.logIntoPriorityQuote(user,password, function(result) {
+	this.Given(/^I log onto priority quote with username "([^"]*)" and password "([^"]*)"$/, function(user, password, next) {
+        console.log("Log into Priority Quote");
+        support.logIntoPriorityQuote(user, password, function(result) {
             next();
         });
     });
 
-    this.Then(/^I should see text "([^"]*)" on page$/, function(textToFind,next) {
+    this.Then(/^I should see text "([^"]*)" on page$/, function(textToFind, next) {
         browser.ignoreSynchronization = true;
         text = browser.getPageSource();
-        console.log(text);
-        console.log(textToFind);
+        console.log('Looking for text "' + textToFind + '"');
+        //console.log(text);
+        //console.log(textToFind);
         expect(text).to.eventually.contain(textToFind).and.notify(next);
     });
 
     this.When(/^I click "([^"]*)"$/, function(link, next) {
-        console.log("\n Click on small group");
-        var formFieldId = new FormFieldsId();
         browser.ignoreSynchronization = true;
-        support.clickElement(formFieldId[link], function(result) {
-            next();
-        	});
+        console.log("\n Click element");
+        var formFieldId = new FormFieldsId();
+        support.clickElement(formFieldId[link], function(result) { 
+        	next(); 
         });
-        
-    this.Given(/^I run Cucumber with Protractor$/, function(next) {
+    });
+    
+    this.When(/^I create a small group in Priority Quote$/, function(next) {
+  		browser.ignoreSynchronization = true;
+  		console.log("\n Create Small Group");
+      	support.createSmallGroupPriorityQuote(function(result){
+      		next();
+    	});
+  	});
+  	
+  	this.When(/^I click on small group$/, function(next) {
+        browser.ignoreSynchronization = true;
+        console.log("\nClick on small group\n");
+        support.clickSmallGroup(function(result) { 
+        	next(); 
+        });
+    });
+  
+  	this.Then(/^I can search for the small group created$/, function(next) {
+  		console.log('\nSearch for small group "Autotest Small Group ' + randomNine '"');
+        browser.ignoreSynchronization = true;
+        support.searchForSmallGroup(function(result) { 
+        	next(); 
+        });
+    });
+  
+  
+  
+  
+  
+    /*this.Given(/^I run Cucumber with Protractor$/, function(next) {
         next();
     });
 
@@ -177,6 +206,6 @@ module.exports = function() {
 
     this.Then(/the title should equal "([^"]*)"$/, function(text, next) {
         expect(browser.getTitle()).to.eventually.equal(text).and.notify(next);
-    });
+    });*/
 
 };
