@@ -1,19 +1,90 @@
+/*************************************************************************
+ * Copyright @2015 Spectrum health
+ *
+ *************************************************************************
+ *
+ * support.js
+ *  This will contain all of the lower level protractor and selinum code
+ *  that will drive the automated tests
+ *
+ *************************************************************************/
+
+var FormFieldsId = require('../page_objects/FormFieldsId.js');
+var PageLocations = require('../page_objects/page_locations.js');
+
+
 var Support = function(){
 };
 
+/**********************************************************************************************************
+   ___                  _      ___                        _   
+  / __|___ _ _  ___ _ _(_)__  / __|_  _ _ __ _ __ ___ _ _| |_ 
+ | (_ / -_| ' \/ -_| '_| / _| \__ | || | '_ | '_ / _ | '_|  _|
+  \___\___|_||_\___|_| |_\__| |___/\_,_| .__| .__\___|_|  \__|
+                                       |_|  |_|               
+***********************************************************************************************************/
+
+Support.prototype.gotoPage = function(link, callback){
+  
+  var pageLocations = new PageLocations();
+
+  browser.get(pageLocations[link]).then(function(result) {
+    callback(result);
+    });
+};
+
+
+Support.prototype.clickElement = function(link, callback){
+  
+  var formFieldsId = new FormFieldsId();
+
+  formFieldId[link].click().then(function() {
+      browser.driver.sleep(1000).then(function(result) {
+            callback(result);
+      });
+    });
+};
+
+Support.prototype.fillInField = function(text, formFieldId, callback){
+  
+  var formFieldsId = new FormFieldsId();
+
+  formFieldsId[formFieldId].sendKeys(text).then(function(restult) {
+    callback(result);
+    });
+};
+
+
+
+/**********************************************************************************************************
+  ___     _         _ _           ___           _       
+ | _ \_ _(_)___ _ _(_| |_ _  _   / _ \ _  _ ___| |_ ___ 
+ |  _| '_| / _ | '_| |  _| || | | (_) | || / _ |  _/ -_)
+ |_| |_| |_\___|_| |_|\__|\_, |  \__\_\\_,_\___/\__\___|
+                          |__/                          
+***********************************************************************************************************/
+
+
 Support.prototype.logIntoPriorityQuote = function(user, password, callback){
-    browser.get("app/priority-quote-beta/#/login?returnUrl=%2Flogin");
-    element(by.name("username")).sendKeys(user);
-    element(by.name("password")).sendKeys(password);
+
+    var formFieldsId = new FormFieldsId();
+    var pageLocations = new PageLocations();
+
+    browser.get(pageLocations.pg_login);
+    formFieldsId.pq_username.sendKeys(user);
+    formFieldsId.pq_password.sendKeys(password);
     browser.driver.sleep(2000).then( function() {
-        element(by.css("input.ph-btn.btn-green")).click();
+        formFieldsId.pq_login_button.click();
         console.log("After Click");
-        browser.driver.sleep(10000).then(function(result) {
+        browser.driver.sleep(5000).then(function(result) {
             console.log("After Sleep");
             callback(result);
         });
     });
 };
+
+
+
 
 Support.prototype.createSmallGroupPriorityQuote = function(callback){
   browser.sleep(1);
@@ -45,11 +116,6 @@ Support.prototype.clickSmallGroup = function(callback){
     });
 };
 
-Support.prototype.clickElement = function(link, callback){
-	link.click().then(function(restult) {
-		callback(result);
-		});
-};
 
 Support.prototype.searchForSmallGroup = function(callback){
 	element(by.id("recentSearch")).sendKeys("Autotest Small Group " + randomNine);

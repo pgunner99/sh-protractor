@@ -1,19 +1,47 @@
+/*************************************************************************
+ * Copyright @2015 Spectrum health
+ *
+ *************************************************************************
+ *
+ * FormFieldsId.js
+ *  This will contain all of the element ids for the tests
+ *
+ *************************************************************************/
+
 'use strict';
 
 
 var FormFieldsId = function() {
 
-	/////////////////////New Page//////////////////////////////////////////
-	//Priority Quote Splash Page
-	
-	this.username = "username";
-	this.username_type = "name";
-	
-	this.password = "password";
-	this.password_type = "name";
-	
+/**********************************************************************************************************
+   ___      _          _ __         ____           __        ____                 ____   ___    
+  / _ \____(____  ____(_/ /___ __  / __ \__ _____ / /____   / _____  ______ _    /  ____/ ( )___
+ / ___/ __/ / _ \/ __/ / __/ // / / /_/ / // / _ / __/ -_) / _// _ \/ __/  ' \  _/ // _  /|/(_-<
+/_/  /_/ /_/\___/_/ /_/\__/\_, /  \___\_\_,_/\___\__/\__/ /_/  \___/_/ /_/_/_/ /___/\_,_/  /___/
+
+***********************************************************************************************************/
+
+	//Priority Quote Login Page
+	this.pq_username = element(by.name("username"));
+	this.pq_password = element(by.name("password"));
+	this.pq_login_button = element(by.css("input.ph-btn.btn-green"));
+
+
+
+
+
+
+/**********************************************************************************************************
+  __  __      _  _          _ _   _      ___                ___    _ _    
+ |  \/  |_  _| || |___ __ _| | |_| |_   | _____ _ _ _ __   |_ _|__| ( )___
+ | |\/| | || | __ / -_/ _` | |  _| ' \  | _/ _ | '_| '  \   | |/ _` |/(_-<
+ |_|  |_|\_, |_||_\___\__,_|_|\__|_||_| |_|\___|_| |_|_|_| |___\__,_| /__/
+         |__/                                                             
+***********************************************************************************************************/
+
+
+
 	this.login = "input[type=\"submit\"]";
-	this.login_type = "css";
 	
 	this.submitbutton = "submitbutton";
 	this.submitbutton_type = "name";
@@ -86,7 +114,7 @@ var FormFieldsId = function() {
 	/////////////////////New Page//////////////////////////////////////////
 	//Priority Quote create new group page.
 	
-	this.smallGroup = "element(by.css('a.ph-btn.btn-green'))"
+	this.smallGroup = element(by.css('a.ph-btn.btn-green'));
 	
  	this.GroupName = "GroupName";
  	this.GroupName_type = "name";
