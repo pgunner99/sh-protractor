@@ -71,18 +71,21 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
 
     var formFieldsId = new FormFieldsId();
     var pageLocations = new PageLocations();
-
-    browser.get(pageLocations.pq_login);
-    formFieldsId.pq_username.sendKeys(user);
-    formFieldsId.pq_password.sendKeys(password);
-    browser.driver.sleep(2000).then( function() {
-        formFieldsId.pq_login_button.click();
-        console.log("After Click");
-        browser.driver.sleep(10000).then(function(result) {
-            console.log("After Sleep");
-            callback(result);
+    
+    browser.get(pageLocations.pq_login).then(function() {
+        formFieldsId.pq_username.clear();
+        formFieldsId.pq_password.clear();
+        formFieldsId.pq_username.sendKeys(user);
+        formFieldsId.pq_password.sendKeys(password);
+        browser.driver.sleep(2000).then( function() {
+            formFieldsId.pq_login_button.click();
+            console.log("After Click");
+            browser.driver.sleep(10000).then(function(result) {
+                console.log("After Sleep");
+                callback(result);
+            });
         });
-    });
+      });
 };
 
 

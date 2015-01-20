@@ -21,13 +21,10 @@ var FormFieldsId = function() {
 
 ***********************************************************************************************************/
 
-
 	//Priority Quote Login Page
 	this.pq_username = element(by.name("username"));
 	this.pq_password = element(by.name("password"));
-	this.pq_login_button = element(by.css("input.ph-btn.btn-green"));
-
-
+	this.pq_login_button = element(by.buttonText("LOGIN"));
 
 	//Priority Quote Dashboard Page
 	this.pq_individual_button = element(by.css("button.ph-btn.btn-green"));

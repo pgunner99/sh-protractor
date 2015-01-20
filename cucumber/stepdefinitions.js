@@ -97,6 +97,7 @@ module.exports = function() {
 
 	this.Given(/^I log onto priority quote with username "([^"]*)" and password "([^"]*)"$/, function(user, password, next) {
         console.log("Log into Priority Quote");
+
         support.logIntoPriorityQuote(user, password, function(result) {
             next();
         });
