@@ -121,6 +121,14 @@ module.exports = function() {
     	});
   	});
   	
+  	this.When(/^I create an individual quote in Priority Quote$/, function(next) {
+  		browser.ignoreSynchronization = true;
+  		console.log("\nCreate individual quote");
+      	support.createIndividualQuotePriorityQuote(function(result){
+      		next();
+    	});
+  	});
+  	  	
   	this.When(/^I click on small group$/, function(next) {
         browser.ignoreSynchronization = true;
         console.log("\nClick on small group\n");
