@@ -5,7 +5,5 @@ Feature: Fill out a individual quote
   @dev
   Scenario: Fill out a individual quote
     Given I log onto priority quote with username "BKFIERENS" and password "test"
-	Given I select "pq_individual_button" 
-	When I enter in "49506" in form field "pq_zipcode"
-	When I wait "15" seconds 
+	When I create a small group in Priority Quote
 

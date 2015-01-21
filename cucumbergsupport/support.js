@@ -85,24 +85,29 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
     });
 };
 
+
+
+
 Support.prototype.createSmallGroupPriorityQuote = function(callback){
 	var formFieldsId = new FormFieldsId();
 	var pageLocations = new PageLocations();
   	browser.sleep(1);
-  	browser.get(pageLocations.pq_new_group_page);
+  	browser.get("https://wwwtest.internal.priorityhealth.com/app/priority-quote-beta/#/new-group");
   	browser.driver.sleep(2000).then( function() {
   		randomNine = Math.floor(Math.random() * 1000000000);
-  		formFieldsId.pq_group_name.sendKeys("Autotest Small Group " + randomNine);
-  		formFieldsId.pq_tax_id.sendKeys(999999999);
-  		formFieldsId.pq_religous_organization_option2.click();
-  		formFieldsId.pq_religous_organization_option2.click();
-  		formFieldsId.pq_general_street_address.sendKeys("AutoTest Street Line1");
-  		formFieldsId.pq_general_street_address2.sendKeys("AutoTest Street Line2");
-  		formFieldsId.pq_general_city.sendKeys("AutoTest City");
-  		formFieldsId.pq_zip_code.sendKeys("49505");
-  		formFieldsId.pq_effective_date_option6_dropDown.click();
+  		pq_group_name.sendKeys("Autotest Small Group " + randomNine);
+  		//element(by.name("GroupName")).sendKeys("Autotest Small Group " + randomNine);
+  		element(by.name("taxId")).sendKeys(999999999);
+  		element(by.xpath("//div[@class='col-sm-12']/form/div[3]/div[1]/select//option[2]")).click();
+  		element(by.xpath("//div[@class='col-sm-12']/form/div[3]/div[1]/select//option[2]")).click();
+  		element(by.name("generalAddress")).sendKeys("AutoTest Street Line1");
+  		element(by.name("generalAddress2")).sendKeys("AutoTest Street Line2");
+  		element(by.name("generalCity")).sendKeys("AutoTest City");
+  		element(by.name("zipcode")).sendKeys("49505");
+  		//sut.browser.setElementSelected: "//div[@class='col-sm-12']//select[.='Choose...Kent']//option[2]"
+  		element(by.xpath("//div[@class='col-sm-12']/form/div[10]/div/effective-date/select//option[6]")).click();
   		browser.driver.sleep(1000).then(function() {
-  			formFieldsId.pq_create_and_close_button.click();
+  			element(by.xpath("//div[@class='col-sm-12']//submit-button[.='Create and close']")).click();
   			browser.driver.sleep(10000).then(function(result) {
         	callback(result);
             });
