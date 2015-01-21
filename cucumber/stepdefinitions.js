@@ -103,6 +103,13 @@ module.exports = function() {
         });
     });
 
+	this.Given(/^I am logged out of priority quote$/, function(next) {
+        console.log("Logging out of priority quote");
+
+        support.logoutPriorityQuote(function(result) {
+            next();
+        });
+    });
 
 	// When Functions
     
@@ -119,6 +126,14 @@ module.exports = function() {
         console.log("\nClick on small group\n");
         support.clickSmallGroup(function(result) { 
         	next(); 
+        });
+    });
+
+	this.When(/^I am logged out of priority quote$/, function(next) {
+        console.log("Logging out of priority quote");
+
+        support.logoutPriorityQuote(function(result) {
+            next();
         });
     });
   

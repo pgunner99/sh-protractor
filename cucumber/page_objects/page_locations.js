@@ -20,6 +20,7 @@ var PageLocations = function() {
                           |__/                                    |___/  
 ***********************************************************************************************************/
 	this.pq_login = "app/priority-quote-beta/#/login?returnUrl=%2Flogin";
+	this.pq_dashboard = "app/priority-quote-beta/#/dashboard";
 
 
 

@@ -26,6 +26,11 @@ var FormFieldsId = function() {
 	this.pq_password = element(by.name("password"));
 	this.pq_login_button = element(by.buttonText("LOGIN"));
 
+	//Priority Quote Menu
+	this.pq_logout_button = element(by.css('[ng-click="logout()"]'));
+	this.pq_hellousername_button = element(by.css('ul.nav:nth-child(4) > li:nth-child(2) > a:nth-child(1)'));
+
+
 	//Priority Quote Dashboard Page
 	this.pq_individual_button = element(by.css("button.ph-btn.btn-green"));
 	this.pq_zipcode = element(by.name("zip"));

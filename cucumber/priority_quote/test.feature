@@ -4,6 +4,7 @@ Feature: I can login to priority quote
   to be to create quotes
 
   Background: 
+    Given I am logged out of priority quote 
   
   @dev
   Scenario: Login with invalid crendentials
@@ -14,7 +15,7 @@ Feature: I can login to priority quote
   @dev
   Scenario: Login with valid crendentials
     Given I log onto priority quote with username "BKFIERENS" and password "test"
-    Then I should see text "Logout" on page
+    Then I logout out of priority quote
 
   
   

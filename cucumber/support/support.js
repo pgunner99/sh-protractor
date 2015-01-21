@@ -11,6 +11,7 @@
 
 var FormFieldsId = require('../page_objects/FormFieldsId.js');
 var PageLocations = require('../page_objects/page_locations.js');
+var helper = require('./helper');
 
 
 var Support = function(){
@@ -77,16 +78,27 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
         formFieldsId.pq_password.clear();
         formFieldsId.pq_username.sendKeys(user);
         formFieldsId.pq_password.sendKeys(password);
-        browser.driver.sleep(2000).then( function() {
-            formFieldsId.pq_login_button.click();
-            console.log("After Click");
-            browser.driver.sleep(10000).then(function(result) {
-                console.log("After Sleep");
-                callback(result);
-            });
+        helper.wait(1);
+        formFieldsId.pq_login_button.click().then( function(result) {
+          helper.wait(10);
+          callback(result);
         });
-      });
+    });
 };
+
+Support.prototype.logoutPriorityQuote = function(callback) {
+    var formFieldsId = new FormFieldsId();
+
+    console.log("click on the user name button");
+    formFieldsId.pq_hellousername_button.click().then(function() {
+      helper.wait(1);   
+      formFieldsId.pq_logout_button.click().then(function() {
+        helper.wait(2);
+        callback(true);  
+      }, function(err) { console.log(err); callback(false); }); 
+    }, function(err) { console.log(err); callback(false); } );
+};
+
 
 
 
