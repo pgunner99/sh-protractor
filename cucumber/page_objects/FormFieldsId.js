@@ -103,6 +103,26 @@ var FormFieldsId = function() {
 	this.pq_individual_medical_plan_option1 = element(by.css("table.table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > input:nth-child(1)"));
 	this.pq_individual_dental_plan_option1 = element(by.css("table.table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(1) > input:nth-child(1)"));
 	this.pq_individual_enroll_button = element(by.css("button.ph-btn.btn-orange"));
+	this.pq_member_information_button = element(by.css("#Enrollment > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1) > h4:nth-child(1)"));
+	this.pq_eligibility_requirements = element(by.linkText("Eligibility requirements"));
+	this.pq_member_information = element(by.linkText("Member information"));
+	this.pq_payment_information = element(by.xpath("//div[@id='Enrollment']/div/div[3]/div[1]/a/h4"));
+	this.pq_expand_all = element(by.linkText("Expand all"));
+	this.pq_middle_initial = element(by.name("middleInitial"));
+	this.pq_ssn = element(by.name("ssn"));
+	this.pq_street_address1 = element(by.name("address1"));
+	this.pq_street_address2 = element(by.name("address2"));
+	this.pq_city = element(by.name("city"));
+	this.pq_phone = element(by.name("phone"));
+	this.pq_email = element(by.xpath("//div[@id='Enrollment']/div/div[2]/div[2]/div/div/form/div/indv-form/ng-form/div[18]/div/input"));
+	this.pq_individual_save_member_information_button = element(by.xpath("//div[@id='Enrollment']//button[.='Save']"));
+	this.pq_close_member_information_popup_button = element(by.css("div.modal-border.clearfix > button.pull-right.ng-scope"));
+	this.pq_eligibility_requirements_enrollees_eligible = element(by.css("enrolleesEligible"));
+	this.pq_dental_attestation_yes_radiobutton = element(by.css("input.ng-dirty:nth-child(1)"));
+	this.pq_dental_attestation_no_radiobutton = element(by.css("input.ng-isolate-scope:nth-child(3)"));
+	this.pq_eligibility_requirements_save_button = element(by.css("submit-button.ph-btn:nth-child(3)"));
+	
+	
                     
 	//Priority Quote create new group page.
 	/////////////////////New Page//////////////////////////////////////////
@@ -129,8 +149,7 @@ var FormFieldsId = function() {
 	this.pq_search_button = element(by.xpath("//div[@class='modal-content']//button[.='Searching...']"));
 	this.pq_close_popup_window_button = element(by.xpath("div.modal-border.clearfix > button.pull-right"));
 	this.pq_search_again_button = element(by.id("searchAgain"));
-
-
+	
 /**********************************************************************************************************
   __  __      _  _          _ _   _      ___                ___    _ _    
  |  \/  |_  _| || |___ __ _| | |_| |_   | _____ _ _ _ __   |_ _|__| ( )___

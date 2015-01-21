@@ -90,6 +90,14 @@ Support.prototype.createIndividualQuotePriorityQuote = function(callback){
 	var formFieldsId = new FormFieldsId();
 	var pageLocations = new PageLocations();
 	
+	var chai = require('chai');
+	var chaiAsPromised = require('chai-as-promised');
+	chai.use(chaiAsPromised);
+
+	var expect = chai.expect;
+	var formFieldsId = new FormFieldsId();
+	var pageLocations = new PageLocations();
+	
 	browser.get(pageLocations.pq_individual_quote);
 	browser.driver.sleep(5000).then(function() {
 		formFieldsId.pq_zipcode.sendKeys("49506");
@@ -103,21 +111,41 @@ Support.prototype.createIndividualQuotePriorityQuote = function(callback){
 		formFieldsId.pq_continue_button.click();
 		browser.driver.sleep(45000).then(function() {
 			formFieldsId.pq_individual_medical_plans.click();
+			browser.driver.sleep(2000).then(function() {
 			formFieldsId.pq_individual_medical_plan_option1.click();
 			formFieldsId.pq_individual_dental_plans.click();
+			browser.driver.sleep(2000).then(function() {
 			formFieldsId.pq_individual_dental_plan_option1.click();
-			formFieldsId.pq_individual_dental_plan_option1.click();
-			text = browser.getPageSource();
-        	expect(text).to.eventually.contain("Complete enrollment for:").and.notify(result);
-            	
+			formFieldsId.pq_individual_enroll_button.click();
+			browser.driver.sleep(15000).then(function() {
+				text = browser.getPageSource();
+        		//expect(text).to.eventually.contain("Complete enrollment for:");
+        		formFieldsId.pq_expand_all.click();
+        		browser.driver.sleep(5000).then(function() {
+        			//expect(text).to.eventually.contain("49506");
+        			formFieldsId.pq_middle_initial.sendKeys("AutoTest Middle Initial");
+        			formFieldsId.pq_ssn.sendKeys("111223333");
+        			formFieldsId.pq_street_address1.sendKeys("AutoTest Street Address1");
+        			formFieldsId.pq_street_address2.sendKeys("AutoTest Street Address2");
+        			formFieldsId.pq_city.sendKeys("AutoTest City");
+        			formFieldsId.pq_phone.sendKeys("1112223333");
+        			formFieldsId.pq_email.sendKeys("autotest@email.com");
+        			formFieldsId.pq_individual_save_member_information_button.click();
+        			browser.driver.sleep(5000).then(function() {
+        			formFieldsId.pq_close_member_information_popup_button.click().then(function(result) {
+        			callback(result);
+        						});
+        					});
+        				});
+        			});
+				});
+        	});
 		});
 	});
 };
 
 Support.prototype.createSmallGroupPriorityQuote = function(callback){
 
-	var formFieldsId = new FormFieldsId();
-	var pageLocations = new PageLocations();
 	
   	browser.get(pageLocations.pq_new_group_page);
   	browser.driver.sleep(5000).then(function() {
