@@ -85,12 +85,42 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
     });
 };
 
-Support.prototype.createSmallGroupPriorityQuote = function(callback){
+Support.prototype.createIndividualQuotePriorityQuote = function(callback){
+
 	var formFieldsId = new FormFieldsId();
 	var pageLocations = new PageLocations();
-  	browser.sleep(1);
+	
+	browser.get(pageLocations.pq_individual_quote);
+	browser.driver.sleep(5000).then(function() {
+		formFieldsId.pq_zipcode.sendKeys("49506");
+		formFieldsId.pq_first_name.sendKeys("AutoTest FirstName");
+		formFieldsId.pq_last_name.sendKeys("AutoTest LastName");
+		formFieldsId.pq_date_of_birth.sendKeys("01/01/1971");
+		formFieldsId.pq_gender_male_radiobutton.click();
+		formFieldsId.pq_gender_female_radiobutton.click();
+		formFieldsId.pq_tobacco_use_no_radiobutton.click();
+		formFieldsId.pq_add_dental_enroll_radiobutton.click();
+		formFieldsId.pq_continue_button.click();
+		browser.driver.sleep(45000).then(function() {
+			formFieldsId.pq_individual_medical_plans.click();
+			formFieldsId.pq_individual_medical_plan_option1.click();
+			formFieldsId.pq_individual_dental_plans.click();
+			formFieldsId.pq_individual_dental_plan_option1.click();
+			formFieldsId.pq_individual_dental_plan_option1.click();
+			text = browser.getPageSource();
+        	expect(text).to.eventually.contain("Complete enrollment for:").and.notify(result);
+            	
+		});
+	});
+};
+
+Support.prototype.createSmallGroupPriorityQuote = function(callback){
+
+	var formFieldsId = new FormFieldsId();
+	var pageLocations = new PageLocations();
+	
   	browser.get(pageLocations.pq_new_group_page);
-  	browser.driver.sleep(2000).then( function() {
+  	browser.driver.sleep(5000).then(function() {
   		randomNine = Math.floor(Math.random() * 1000000000);
   		formFieldsId.pq_group_name.sendKeys("Autotest Small Group " + randomNine);
   		formFieldsId.pq_tax_id.sendKeys(999999999);
@@ -115,7 +145,6 @@ Support.prototype.clickSmallGroup = function(callback){
         	callback(result);
     });
 };
-
 
 Support.prototype.searchForSmallGroup = function(callback){
 	element(by.id("recentSearch")).sendKeys("Autotest Small Group " + randomNine);

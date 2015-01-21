@@ -21,7 +21,7 @@ var PageLocations = function() {
 ***********************************************************************************************************/
 	this.pq_login = "app/priority-quote-beta/#/login?returnUrl=%2Flogin";
 	this.pq_new_group_page = "https://wwwtest.internal.priorityhealth.com/app/priority-quote-beta/#/new-group";
-
+	this.pq_individual_quote = "https://wwwtest.internal.priorityhealth.com/app/priority-quote-beta/#/quotes/census/individual";
 
 
 /**********************************************************************************************************
