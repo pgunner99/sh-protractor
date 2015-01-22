@@ -78,18 +78,21 @@ Support.prototype.logIntoPriorityQuote = function(user, password, callback){
     var formFieldsId = new FormFieldsId();
     var pageLocations = new PageLocations();
     
-    browser.get(pageLocations.pq_login).then(function() {
-        formFieldsId.pq_username.clear();
-        formFieldsId.pq_password.clear();
-        formFieldsId.pq_username.sendKeys(user);
-        formFieldsId.pq_password.sendKeys(password);
+    try 
+    {
+        helper.gotoUrl(pageLocations.pq_login);
+        helper.clearThenFillInText(formFieldsId.pq_username, user);
+        helper.clearThenFillInText(formFieldsId.pq_password, password);
         helper.wait(1);
-        formFieldsId.pq_login_button.click().then( function(result) {
-          helper.wait(10);
-          callback(result);
-        });
-    });
-};
+        helper.click(formFieldsId.pq_login_button);
+        helper.wait(10);
+    }
+    catch(err) {
+        console.log("Log into priority quote error:" + err);
+        callback(false);
+    }
+    callback(true);
+  };
 
 Support.prototype.logoutPriorityQuote = function(callback) {
     var formFieldsId = new FormFieldsId();
@@ -102,7 +105,7 @@ Support.prototype.logoutPriorityQuote = function(callback) {
         callback(true);  
       }, function(err) { console.log(err); callback(false); }); 
     }, function(err) { console.log(err); callback(false); } );
-};
+  };
 
 
 

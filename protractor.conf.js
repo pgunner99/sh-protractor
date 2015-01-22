@@ -12,9 +12,10 @@ var env = require('./environment.js');
 
 // A small suite to make sure the cucumber framework works.
 exports.config = {
-  seleniumAddress: env.seleniumAddress,
+  seleniumAddress: '',
   allScriptsTimeout: 11000,
   framework: 'cucumber',
+  directConnect: true,
 
   // Spec patterns are relative to this directory.
   specs: [

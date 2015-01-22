@@ -2,7 +2,6 @@ Feature: Fill out a individual quote
   As a user of priority quote
   I should be able to login to prority quote and fill out a individual quote
 
-  @dev
   Scenario: Fill out a individual quote 1
     Given I log onto priority quote with username "BKFIERENS" and password "test"
 	Given I select "pq_individual_button" 
