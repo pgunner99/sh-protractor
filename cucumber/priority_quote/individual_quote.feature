@@ -26,7 +26,7 @@ Feature: Fill out a individual quote
 	When I wait "10" seconds
 	Then I should see text "Complete enrollment for:" on page
 	
-	
+  @dev
   Scenario: Fill out a individual quote
 	Given I log onto priority quote with username "BKFIERENS" and password "test"
 	When I create an individual quote in Priority Quote
@@ -34,3 +34,12 @@ Feature: Fill out a individual quote
   Scenario: Fill out a small group quote
     Given I log onto priority quote with username "BKFIERENS" and password "test"
 	When I create a small group in Priority Quote
+
+
+ Background:
+    Given an agent named "KRAMER"
+    And a test environment named "test.internal.priorityhealth.com"
+    And a page "create indivudual quote"
+    And a Plan type "permanent"
+    And an enrollment type "special enrollment period" 
+
