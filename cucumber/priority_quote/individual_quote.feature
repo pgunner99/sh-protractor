@@ -2,12 +2,6 @@ Feature: Fill out a individual quote
   As a user of priority quote
   I should be able to login to prority quote and fill out a individual quote
 
-<<<<<<< HEAD
-
-  @dev
-=======
-  
->>>>>>> jd's
   Scenario: Fill out a individual quote 1
     Given I log onto priority quote with username "BKFIERENS" and password "test"
 	Given I select "pq_individual_button" 
@@ -32,7 +26,7 @@ Feature: Fill out a individual quote
 	When I wait "10" seconds
 	Then I should see text "Complete enrollment for:" on page
 	
-	@dev
+  @dev
   Scenario: Fill out a individual quote
 	Given I log onto priority quote with username "BKFIERENS" and password "test"
 	When I create an individual quote in Priority Quote
