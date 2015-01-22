@@ -2,6 +2,7 @@ Feature: Fill out a individual quote
   As a user of priority quote
   I should be able to login to prority quote and fill out a individual quote
 
+
   @dev
   Scenario: Fill out a individual quote 1
     Given I log onto priority quote with username "BKFIERENS" and password "test"
@@ -35,3 +36,12 @@ Feature: Fill out a individual quote
   Scenario: Fill out a small group quote
     Given I log onto priority quote with username "BKFIERENS" and password "test"
 	When I create a small group in Priority Quote
+
+
+ Background:
+    Given an agent named "KRAMER"
+    And a test environment named "test.internal.priorityhealth.com"
+    And a page "create indivudual quote"
+    And a Plan type "permanent"
+    And an enrollment type "special enrollment period" 
+
