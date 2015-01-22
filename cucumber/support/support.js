@@ -110,53 +110,72 @@ Support.prototype.logoutPriorityQuote = function(callback) {
 
 Support.prototype.createIndividualQuotePriorityQuote = function(callback){
 
-  var formFieldsId = new FormFieldsId();
-  var pageLocations = new PageLocations();
+  	var formFieldsId = new FormFieldsId();
+  	var pageLocations = new PageLocations();
+  	text = browser.getPageSource();
   
-  browser.get(pageLocations.pq_individual_quote);
-  browser.driver.sleep(5000).then(function() {
-    formFieldsId.pq_zipcode.sendKeys("49506");
+  	browser.get(pageLocations.pq_individual_quote);
+  	helper.wait(5);
+	formFieldsId.pq_zipcode.sendKeys("49506");
     formFieldsId.pq_first_name.sendKeys("AutoTest FirstName");
     formFieldsId.pq_last_name.sendKeys("AutoTest LastName");
     formFieldsId.pq_date_of_birth.sendKeys("01/01/1971");
     formFieldsId.pq_gender_male_radiobutton.click();
+    //Next line activates popup box
+    //Female button does not always activate, calling twice seems to help
     formFieldsId.pq_gender_female_radiobutton.click();
+    formFieldsId.pq_gender_female_radiobutton.click(); 
+    formFieldsId.pq_tobacco_use_no_radiobutton.click();
     formFieldsId.pq_tobacco_use_no_radiobutton.click();
     formFieldsId.pq_add_dental_enroll_radiobutton.click();
+    helper.wait(1);
     formFieldsId.pq_continue_button.click();
-    browser.driver.sleep(45000).then(function() {
-      formFieldsId.pq_individual_medical_plans.click();
-      browser.driver.sleep(2000).then(function() {
-      formFieldsId.pq_individual_medical_plan_option1.click();
-      formFieldsId.pq_individual_dental_plans.click();
-      browser.driver.sleep(2000).then(function() {
-      formFieldsId.pq_individual_dental_plan_option1.click();
-      formFieldsId.pq_individual_enroll_button.click();
-      browser.driver.sleep(15000).then(function() {
-        text = browser.getPageSource();
-            //expect(text).to.eventually.contain("Complete enrollment for:");
-            formFieldsId.pq_expand_all.click();
-            browser.driver.sleep(5000).then(function() {
-              //expect(text).to.eventually.contain("49506");
-              formFieldsId.pq_middle_initial.sendKeys("AutoTest Middle Initial");
-              formFieldsId.pq_ssn.sendKeys("111223333");
-              formFieldsId.pq_street_address1.sendKeys("AutoTest Street Address1");
-              formFieldsId.pq_street_address2.sendKeys("AutoTest Street Address2");
-              formFieldsId.pq_city.sendKeys("AutoTest City");
-              formFieldsId.pq_phone.sendKeys("1112223333");
-              formFieldsId.pq_email.sendKeys("autotest@email.com");
-              formFieldsId.pq_individual_save_member_information_button.click();
-              browser.driver.sleep(5000).then(function() {
-              formFieldsId.pq_close_member_information_popup_button.click().then(function(result) {
-              callback(result);
-                    });
-                  });
-                });
-              });
-        });
-          });
-    });
-  });
+    helper.wait(40);
+    formFieldsId.pq_individual_medical_plans.click();
+    helper.wait(2);
+    formFieldsId.pq_individual_medical_plan_option1.click();
+    formFieldsId.pq_individual_dental_plans.click();
+    helper.wait(2);
+    formFieldsId.pq_individual_dental_plan_option1.click();
+    formFieldsId.pq_individual_enroll_button.click();
+    helper.wait(4);
+    formFieldsId.pq_expand_all.click();
+    helper.wait(1);
+    formFieldsId.pq_eligibility_requirements_enrollees_eligible.click();
+    helper.wait(1);
+    formFieldsId.pq_dental_attestation_yes_radiobutton.click();
+    //Next line activates popup box
+    //formFieldsId.pq_eligibility_requirements_save_button.click();
+    formFieldsId.pq_middle_initial.sendKeys("AutoTest Middle Initial");
+    formFieldsId.pq_ssn.sendKeys("111223333");
+    formFieldsId.pq_street_address1.sendKeys("AutoTest Street Address1");
+    formFieldsId.pq_street_address2.sendKeys("AutoTest Street Address2");
+    formFieldsId.pq_city.sendKeys("AutoTest City");
+    formFieldsId.pq_phone.sendKeys("616");
+    formFieldsId.pq_phone.sendKeys("2223333");
+    formFieldsId.pq_email.sendKeys("autotest@email.com");
+    //formFieldsId.pq_individual_save_member_information_button.click();
+    formFieldsId.pq_payment_frequency_dropdown_option2.click();
+    helper.wait(3);
+    formFieldsId.payment_method_credit_card_radiobutton.click();
+    helper.wait(3);
+    formFieldsId.card_type_dropdown_option3.click();
+    helper.wait(3);
+    formFieldsId.pq_credit_card_number.sendKeys("5300212134354647");
+    helper.wait(3);
+    formFieldsId.pq_name_on_card.sendKeys("AutoTest CardName");
+    helper.wait(3);
+    formFieldsId.pq_expiration_date.sendKeys("07/17");
+    helper.wait(3);
+    formFieldsId.pq_billing_address_checkbox.click();
+    helper.wait(3);
+    formFieldsId.pq_payment_method_mail_a_bill_radiobutton.click();
+    helper.wait(3);
+    //formFieldsId.pq_payment_frequency_save.click();
+    helper.wait(60);
+    browser.driver.sleep(1).then(function(result) {
+          callback(result);
+            });
 };
 
 Support.prototype.createSmallGroupPriorityQuote = function(callback){
