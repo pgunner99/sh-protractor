@@ -140,9 +140,8 @@ Support.prototype.createIndividualQuotePriorityQuote = function(callback){
     formFieldsId.pq_individual_enroll_button.click();
     helper.wait(4);
     formFieldsId.pq_expand_all.click();
-    helper.wait(1);
+    helper.wait(2);
     formFieldsId.pq_eligibility_requirements_enrollees_eligible.click();
-    helper.wait(1);
     formFieldsId.pq_dental_attestation_yes_radiobutton.click();
     //Next line activates popup box
     //formFieldsId.pq_eligibility_requirements_save_button.click();
@@ -156,21 +155,19 @@ Support.prototype.createIndividualQuotePriorityQuote = function(callback){
     formFieldsId.pq_email.sendKeys("autotest@email.com");
     //formFieldsId.pq_individual_save_member_information_button.click();
     formFieldsId.pq_payment_frequency_dropdown_option2.click();
-    helper.wait(3);
     formFieldsId.payment_method_credit_card_radiobutton.click();
-    helper.wait(3);
     formFieldsId.card_type_dropdown_option3.click();
-    helper.wait(3);
     formFieldsId.pq_credit_card_number.sendKeys("5300212134354647");
-    helper.wait(3);
     formFieldsId.pq_name_on_card.sendKeys("AutoTest CardName");
-    helper.wait(3);
     formFieldsId.pq_expiration_date.sendKeys("07/17");
-    helper.wait(3);
-    formFieldsId.pq_billing_address_checkbox.click();
-    helper.wait(3);
+    //pq_billing_address_checkbox can not be found. 
+    //formFieldsId.pq_billing_address_checkbox.click();
+    formFieldsId.pq_payment_information_street_address1.sendKeys("AutoTest Street Address1");
+    formFieldsId.pq_payment_information_street_address2.sendKeys("AutoTest Street Address2");
+    formFieldsId.pq_payment_information_city.sendKeys("AutoTest City");
+    formFieldsId.pq_payment_information_state_dropdown_option2.click();
+    formFieldsId.pq_payment_information_zipcode.sendKeys("49506");
     formFieldsId.pq_payment_method_mail_a_bill_radiobutton.click();
-    helper.wait(3);
     //formFieldsId.pq_payment_frequency_save.click();
     helper.wait(60);
     browser.driver.sleep(1).then(function(result) {

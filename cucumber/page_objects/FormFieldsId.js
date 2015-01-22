@@ -109,6 +109,7 @@ var FormFieldsId = function() {
 	this.pq_eligibility_requirements_save_button = element(by.css("submit-button.ph-btn:nth-child(3)"));
 	//pq_close_eligibility_requirements_popup_button, does not work
 	this.pq_close_eligibility_requirements_popup_button = element(by.css("button.ng-scope:nth-child(3)"));
+	//Payment information
 	this.pq_payment_frequency_dropdown_option1 = element(by.xpath("//div[@class='col-sm-4']/select//option[1]"));
 	this.pq_payment_frequency_dropdown_option2 = element(by.xpath("//div[@class='col-sm-4']/select//option[2]"));
 	this.pq_payment_frequency_dropdown_option3 = element(by.xpath("//div[@class='col-sm-4']/select//option[3]"));
@@ -124,9 +125,11 @@ var FormFieldsId = function() {
 	this.pq_name_on_card = element(by.name("cardHolder"));
 	this.pq_expiration_date = element(by.name("cardExpDate"));
 	this.pq_billing_address_checkbox = element(by.css("ng-form.ng-invalid-credit-card > div:nth-child(5) > div:nth-child(2) > input:nth-child(1)"));
-	this.pq_payment_frequency_street_address1 = element(by.name("streetAddress"));
-	this.pq_payment_frequency_street_address2 = element(by.name("streetAddress2"));
-	this.pq_payment_frequency_city = element(by.name("city"));
+	this.pq_payment_information_street_address1 = element(by.name("streetAddress"));
+	this.pq_payment_information_street_address2 = element(by.name("streetAddress2"));
+	this.pq_payment_information_city = element(by.css('div.col-sm-8 > input[name="city"]'));
+	this.pq_payment_information_state_dropdown_option2 = element(by.xpath("//div[@id='Enrollment']/div/div[3]/div[2]/div/div/form/div[7]/ng-form/div[9]/div[2]/select//option[2]"));
+	this.pq_payment_information_zipcode = element(by.name("zip"));
 	this.pq_payment_method_electronic_funds_transfer_radiobutton = element(by.name("ongoingPaymentMethod"));
 	this.pq_payment_method_mail_a_bill_radiobutton = element(by.xpath("//div[@id='Enrollment']/div/div[3]/div[2]/div/div/form/div[8]/div/div/div[2]/input"));
 	this.pq_name_of_finacial_insitutuion = element(by.name("bank"));
