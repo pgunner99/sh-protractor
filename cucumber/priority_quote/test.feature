@@ -24,3 +24,8 @@ Feature: I can login to priority quote
     Then I can search for the small group created
     #When I click "smallGroup"
     #Then I should see text "Create new group" on page
+
+
+
+  Scenerio:
+    Given I log onto priority quote wtih username 
