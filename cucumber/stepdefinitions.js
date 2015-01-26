@@ -54,7 +54,6 @@ module.exports = function() {
     this.When(/^I enter in "([^"]*)" in form field "([^"]*)"$/, function(text, formField, next) {
         console.log("\n Selecting element:" + formField);
 
-
         browser.ignoreSynchronization = true;
         support.fillInField(text, formField, function(result) { 
         	next(); 

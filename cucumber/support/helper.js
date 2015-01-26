@@ -12,6 +12,7 @@
 var Helper = function(){
 };
 
+
 Helper.prototype.wait = function(seconds) {
     browser.driver.sleep(seconds*1000).then(function() {
         });      
@@ -42,7 +43,6 @@ Helper.prototype.clearThenFillInText = function(elementToSendText, text) {
 		throw err2;
 	});
 };
-
 
 
 module.exports = new Helper();

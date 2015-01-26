@@ -19,10 +19,10 @@ var PageLocations = function() {
  |_| |_| |_\___|_| |_|\__|\_, |  \__\_\\_,_\___/\__\___| |_| \__,_\__, \___/__/
                           |__/                                    |___/  
 ***********************************************************************************************************/
-	this.pq_login = "app/priority-quote-beta/#/login?returnUrl=%2Flogin";
-	this.pq_dashboard = "app/priority-quote-beta/#/dashboard";
-	this.pq_individual_quote = "app/priority-quote-beta/#/quotes/census/individual";
-	this.pq_new_group_page = "app/priority-quote-beta/#/new-group";
+	this.login = "app/priority-quote-beta/#/login?returnUrl=%2Flogin";
+	this.dashboard = "app/priority-quote-beta/#/dashboard";
+	this.individual_quote = "app/priority-quote-beta/#/quotes/census/individual";
+	this.new_group_page = "app/priority-quote-beta/#/new-group";
 
 /**********************************************************************************************************
   __  __      _  _          _ _   _      ___                  
