@@ -121,7 +121,6 @@ Support.prototype.createIndividualQuotePriorityQuote = function(callback){
     helper.clearThenFillInText(formFieldsId.last_name, 'AutoTest LastName');
     helper.clearThenFillInText(formFieldsId.date_of_birth, '01/01/1971');
     formFieldsId.gender_male_radiobutton.click();
-    //Next line activates popup box
     //Female button does not always activate, calling twice seems to help
     helper.click(formFieldsId.gender_female_radiobutton);
     helper.click(formFieldsId.gender_female_radiobutton); 
@@ -130,7 +129,7 @@ Support.prototype.createIndividualQuotePriorityQuote = function(callback){
     helper.click(formFieldsId.add_dental_enroll_radiobutton);
     helper.wait(3);
     helper.click(formFieldsId.continue_button);
-    helper.wait(45);
+    helper.wait(75);
     helper.click(formFieldsId.individual_medical_plans);
     helper.wait(2);
     helper.click(formFieldsId.individual_medical_plan_option1);
@@ -147,26 +146,25 @@ Support.prototype.createIndividualQuotePriorityQuote = function(callback){
     //formFieldsId.eligibility_requirements_save_button.click();
     helper.clearThenFillInText(formFieldsId.middle_initial, 'AutoTest Middle Initial');
     helper.clearThenFillInText(formFieldsId.ssn, "111223333");
-    formFieldsId.street_address1.sendKeys("AutoTest Street Address1");
-    formFieldsId.street_address2.sendKeys("AutoTest Street Address2");
-    formFieldsId.city.sendKeys("AutoTest City");
-    formFieldsId.phone.sendKeys("616");
-    formFieldsId.phone.sendKeys("2223333");
-    formFieldsId.email.sendKeys("autotest@email.com");
+    helper.clearThenFillInText(formFieldsId.street_address1, 'AutoTest Street Address1');
+    helper.clearThenFillInText(formFieldsId.street_address2, "AutoTest Street Address2");
+    helper.clearThenFillInText(formFieldsId.city, "AutoTest City");
+    helper.clearThenFillInText(formFieldsId.phone, "6162223333");
+    helper.clearThenFillInText(formFieldsId.email, "autotest@email.com");
     //formFieldsId.individual_save_member_information_button.click();
-    helper.click(formFieldsId.payment_frequency_dropdown_option2);
+        helper.click(formFieldsId.payment_frequency_dropdown_option2);
     helper.click(formFieldsId.payment_method_credit_card_radiobutton);
     helper.click(formFieldsId.card_type_dropdown_option3);
-    formFieldsId.credit_card_number.sendKeys("5300212134354647");
-    formFieldsId.name_on_card.sendKeys("AutoTest CardName");
-    formFieldsId.expiration_date.sendKeys("07/17");
-    //billing_address_checkbox can not be found. 
+    helper.clearThenFillInText(formFieldsId.credit_card_number, "5300212134354647");
+    helper.clearThenFillInText(formFieldsId.name_on_card, "AutoTest CardName");
+    helper.clearThenFillInText(formFieldsId.expiration_date, "07/17");
+    //billing_address_checkbox cannot be found. 
     //formFieldsId.billing_address_checkbox.click();
-    formFieldsId.payment_information_street_address1.sendKeys("AutoTest Street Address1");
-    formFieldsId.payment_information_street_address2.sendKeys("AutoTest Street Address2");
-    formFieldsId.payment_information_city.sendKeys("AutoTest City");
+    helper.clearThenFillInText(formFieldsId.payment_information_street_address1, "AutoTest Street Address1");
+    helper.clearThenFillInText(formFieldsId.payment_information_street_address2, "AutoTest Street Address2");
+    helper.clearThenFillInText(formFieldsId.payment_information_city, "AutoTest City");
     helper.click(formFieldsId.payment_information_state_dropdown_option2);
-    formFieldsId.payment_information_zipcode.sendKeys("49506");
+    helper.clearThenFillInText(formFieldsId.payment_information_zipcode, "49506");
     helper.click(formFieldsId.payment_method_mail_a_bill_radiobutton);
     //formFieldsId.payment_frequency_save.click();
     helper.wait(60);
